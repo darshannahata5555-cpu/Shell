@@ -16,7 +16,7 @@ public class Main {
                     }
                 else if(command.startsWith("echo"))
                     {
-                        System.out.print(command.substring(5));
+                        System.out.println(command.substring(5));
                     }
                 else 
                     {
