@@ -53,7 +53,7 @@ public class Main {
 
                         if(file.exists() && file.isFile() && file.canExecute())
                         {
-                            System.out.print(name+ " is " + file.getPath());
+                            System.out.println(name+ " is " + file.getPath());
                             found=true;
                             break;
                         }
