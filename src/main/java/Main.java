@@ -1,4 +1,5 @@
-import java.util.Scanner;
+import java.util.*;
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -9,6 +10,7 @@ public class Main {
 
                 Scanner scanner = new Scanner(System.in);
                 String command = scanner.nextLine();
+                String name = command.substring(5);
                 
                 if(command.equals("exit"))
                 {
@@ -33,21 +35,41 @@ public class Main {
                     // {
                     //     System.out.println("type is a shell builtin");
                     // }
-                    if(command.startsWith("type"))
-                    {
-                        if(command.equals("echo") || command.equals("exit") || command.equals("type"))
+                    
+                        if(name.equals("echo") || name.equals("exit") || name.equals("type"))
                         {
-                            System.out.print(command.substring(5) + " is a shell builtin");
+                            System.out.println(command.substring(5) + " is a shell builtin");
                         }
-                    }
-                    else
-                    {
-                        System.out.println(command.substring(5)+ ": not found");
-                    }
+                        else
+                        {
+                            System.out.println(name + ": not found");
+                        }
+                        
+                    
                 }
                 else 
                 {
-                    System.out.println(command + ": command not found");
+                    // System.out.println(command + ": command not found");
+                    String path = System.getenv("PATH");
+                    String[] folders = path.split(File.pathSeparator);
+
+                    boolean found = false;
+
+                    for(String folder : folders)
+                    {
+                        File file = new File(folder, name);
+
+                        if(file.exists() && file.isFile() && file.canExecute())
+                        {
+                            System.out.print(name+ " is " + file.getPath());
+                            found=true;
+                            break;
+                        }
+                    }
+                    if(!found)
+                    {
+                        System.out.println(name = ": not found");
+                    }
                 }
             }
     }
