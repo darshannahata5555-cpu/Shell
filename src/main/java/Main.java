@@ -13,6 +13,7 @@ public class Main {
                 if(command.startsWith("echo"))
                 {
                     System.out.print(command.substring(5));
+                    break;
                 }
                 if(command.equals("exit"))
                 {
