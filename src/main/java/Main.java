@@ -9,7 +9,11 @@ public class Main {
 
                 Scanner scanner = new Scanner(System.in);
                 String command = scanner.nextLine();
-
+                
+                if(command.startsWith("echo"))
+                {
+                    System.out.print(command.substring(5));
+                }
                 if(command.equals("exit"))
                 {
                     break;
