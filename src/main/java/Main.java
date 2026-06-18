@@ -10,16 +10,15 @@ public class Main {
                 Scanner scanner = new Scanner(System.in);
                 String command = scanner.nextLine();
                 
-                if(command.startsWith("echo"))
-                {
-                    System.out.print(command.substring(5));
-                    break;
-                }
                 if(command.equals("exit"))
                 {
                     break;
                 }
-                System.out.println(command + ": command not found");
+                else if(command.startsWith("echo"))
+                {
+                    System.out.print(command.substring(5));
+                }
+                else System.out.println(command + ": command not found");
             }
     }
 }
